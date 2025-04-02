@@ -17,16 +17,12 @@
 ## Project Structure
 
 memory-js/
-│── index.html      # Main HTML structure
-│── css/
-│   └── styles.css  # Game styling
-│── js/
-│   └── script.js   # Core game logic
-│── utils/
-│   └── helper.js   # Utility functions (card shuffling)
-│── assets/
-│   └── images/     # Card images
-│── README.md       # Project documentation
+- index.html           # Main HTML structure
+- css/styles.css       # Game styling
+- js/script.js         # Core game logic
+- utils/helper.js      # Utility functions (card shuffling)
+- assets/images/       # Card images
+- README.md            # Project documentation
 
 ## Technologies Used
 
