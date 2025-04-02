@@ -5,7 +5,7 @@ class MemoryGame {
 		this.cards = document.querySelectorAll(selector);
 		this.flipped = false;
 		this.clickBlock = false;
-		this.firstCard = null;
+		this.flipCard = this.flipCard.bind(this);
 		this.secondCard = null;
 		this.startTime = null;
 		this.endTime = null;
@@ -22,7 +22,7 @@ class MemoryGame {
 		this.startTime = Date.now();
 
 		this.cards.forEach((card) => {
-			card.addEventListener("click", (e) => this.flipCard(e));
+			card.addEventListener("click", this.flipCard);
 		});
 	}
 
@@ -48,13 +48,13 @@ class MemoryGame {
 			this.firstCard.dataset.item === this.secondCard.dataset.item;
 		isEqual ? this.disableCard() : this.unFlipCard();
 
-		if (this.isAllCardsFlliped()) {
+		if (this.isAllCardsFllipped()) {
 			this.endTime = Date.now();
 			this.displayTime();
 		}
 	}
 
-	isAllCardsFlliped() {
+	isAllCardsFllipped() {
 		return [...this.cards].every((card) => card.classList.contains("flip"));
 	}
 
@@ -91,7 +91,8 @@ class MemoryGame {
 		shuffleCards(this.cards);
 		this.cards.forEach((card) => {
 			card.classList.remove("flip");
-			card.addEventListener("click", (e) => this.flipCard(e));
+			card.removeEventListener("click", this.flipCard); 
+			card.addEventListener("click", this.flipCard); 
 		});
 		this.startTime = Date.now();
 	}
